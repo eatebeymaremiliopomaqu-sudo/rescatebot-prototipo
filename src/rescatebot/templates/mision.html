@@ -1,0 +1,13 @@
+{% extends 'base.html' %}{% block titulo %}Nueva misión{% endblock %}
+{% block contenido %}
+<form class="tarjeta" method="post" id="form-mision" novalidate>
+  <h1>Iniciar misión</h1>
+  {% for e in errores %}<div class="msg msg-error" role="alert">{{ e }}</div>{% endfor %}
+  <label for="robot">Robot</label>
+  <select id="robot" name="robot"><option value="">-- seleccione --</option>
+  {% for r in robots %}<option value="{{ r.id_robot }}">{{ r.codigo }} · {{ r.modelo }}</option>{% endfor %}</select>
+  <label for="escenario">Escenario</label>
+  <input id="escenario" name="escenario" placeholder="Ej.: E9 incendio simulado - laboratorio">
+  <button type="submit" id="btn-iniciar">INICIAR MISIÓN</button>
+</form>
+{% endblock %}

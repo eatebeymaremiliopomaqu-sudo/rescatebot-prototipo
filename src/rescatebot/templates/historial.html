@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% block titulo %}Historial{% endblock %}
+{% block contenido %}
+<div class="tarjeta"><h1>Historial de misiones</h1>
+<table id="tabla-historial"><tr><th>#</th><th>Robot</th><th>Escenario</th><th>Inicio</th><th>Fin</th><th>Lecturas</th><th>Alertas</th><th>Reporte</th></tr>
+{% for f in filas %}<tr><td>{{ f.id_sesion }}</td><td>{{ f.codigo }}</td><td>{{ f.escenario }}</td><td>{{ f.inicio }}</td>
+<td>{{ f.fin or 'activa' }}</td><td>{{ f.n_lect }}</td><td>{{ f.n_alert }}</td>
+<td><a href="{{ url_for('exportar', id_sesion=f.id_sesion) }}" id="exportar-{{ f.id_sesion }}">CSV</a></td></tr>
+{% else %}<tr><td colspan="8">Sin misiones registradas</td></tr>{% endfor %}</table></div>
+{% endblock %}

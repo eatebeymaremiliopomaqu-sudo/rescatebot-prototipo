@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block titulo %}RescateBot{% endblock %} · RescateBot El Alto</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}"></head>
+<body>
+<header class="barra">
+  <span class="marca">🤖 RescateBot <small>El Alto</small></span>
+  {% if session.id_usuario %}
+  <nav><a href="{{ url_for('panel') }}" id="nav-panel">Panel</a>
+  {% if session.rol == 'supervisor' %}<a href="{{ url_for('detecciones') }}" id="nav-detecciones">Detecciones</a>{% endif %}
+  <a href="{{ url_for('historial') }}" id="nav-historial">Historial</a>
+  <span class="usuario" id="usuario-actual">{{ session.nombre }} ({{ session.rol }})</span>
+  <a href="{{ url_for('salir') }}" id="nav-salir">Salir</a></nav>
+  {% endif %}
+</header>
+<main>
+{% with msgs = get_flashed_messages(with_categories=true) %}{% for cat, m in msgs %}
+<div class="msg msg-{{ cat }}" role="alert">{{ m }}</div>{% endfor %}{% endwith %}
+{% block contenido %}{% endblock %}
+</main></body></html>

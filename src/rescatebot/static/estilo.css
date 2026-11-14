@@ -1,0 +1,21 @@
+*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:#eef2f7;color:#1b2533}
+.barra{display:flex;justify-content:space-between;align-items:center;background:#1f3b63;color:#fff;padding:10px 22px}
+.marca{font-weight:700;font-size:18px}.marca small{font-weight:400;opacity:.8}
+nav a{color:#fff;margin-left:16px;text-decoration:none}nav .usuario{margin-left:16px;opacity:.8;font-size:13px}
+main{max-width:1100px;margin:22px auto;padding:0 16px}h1{font-size:22px;color:#1f3b63}h2{font-size:16px;margin-top:0}
+.tarjeta{background:#fff;border-radius:10px;padding:18px 20px;box-shadow:0 2px 6px rgba(0,0,0,.08);margin-bottom:16px}
+.login{max-width:380px;margin:50px auto}label{display:block;margin:10px 0 4px;font-size:13px;font-weight:600}
+input,select{width:100%;padding:9px;border:1px solid #b9c3d1;border-radius:6px;font-size:14px}
+button,.boton{display:inline-block;background:#1f6fd1;color:#fff;border:0;border-radius:6px;padding:9px 16px;margin-top:12px;cursor:pointer;font-weight:600;text-decoration:none}
+.secundario{background:#6b7785}.ok{background:#1c8a4a}.parada{background:#c62828;grid-column:1/4}
+.nota{font-size:11px;color:#667;margin-top:14px}
+.msg{padding:9px 12px;border-radius:6px;margin:8px 0;font-size:14px}.msg-error{background:#fde3e3;color:#9b1c1c}
+.msg-ok{background:#e1f5e8;color:#16643a}.msg-aviso{background:#fff4d6;color:#7a5a00}
+.rejilla{display:grid;grid-template-columns:3fr 2fr;gap:16px}
+.pantalla{background:#20262e;color:#cfd6df;height:190px;border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center}
+.mando{display:grid;grid-template-columns:repeat(3,80px);gap:6px;justify-content:center}.mando button{margin:0}
+#btn-adelante{grid-column:2}#btn-izquierda{grid-column:1;grid-row:2}#btn-derecha{grid-column:3;grid-row:2}#btn-atras{grid-column:2;grid-row:3}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{border-bottom:1px solid #e1e6ee;padding:6px;text-align:left}
+.tele td{font-weight:700;font-size:15px}#form-lectura{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+#form-lectura h3{width:100%;margin:12px 0 0}#form-lectura select,#form-lectura input{width:auto;flex:1}#form-lectura button{margin:0}
+.alerta{color:#9b5b00}ul{padding-left:18px}

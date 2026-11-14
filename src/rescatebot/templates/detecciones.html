@@ -1,0 +1,15 @@
+{% extends 'base.html' %}{% block titulo %}Detecciones{% endblock %}
+{% block contenido %}
+<div class="tarjeta"><h1>Revisión de detecciones</h1>
+<form method="get" id="form-filtro">Estado:
+<select name="estado" id="filtro-estado">{% for e in ['pendiente','confirmado','descartado','no_concluyente','todas'] %}
+<option value="{{ e }}" {% if e == estado %}selected{% endif %}>{{ e }}</option>{% endfor %}</select>
+<button id="btn-filtrar">FILTRAR</button></form>
+<table id="tabla-detecciones"><tr><th>#</th><th>Robot</th><th>Cuadro</th><th>Confianza</th><th>Sector</th><th>Decisión</th><th>Acción</th></tr>
+{% for d in filas %}<tr id="det-{{ d.id_deteccion }}"><td>{{ d.id_deteccion }}</td><td>{{ d.codigo }}</td><td>{{ d.nro_cuadro }}</td>
+<td>{{ '%.2f' % d.confianza }}</td><td>{{ d.sector or '—' }}</td><td class="decision">{{ d.decision }}</td>
+<td><form method="post" action="{{ url_for('decidir', id_det=d.id_deteccion) }}">
+<button name="decision" value="confirmado" class="ok">✔ Confirmar</button>
+<button name="decision" value="descartado" class="secundario">✖ Descartar</button></form></td></tr>
+{% else %}<tr><td colspan="7" id="sin-detecciones">No hay detecciones con esos filtros</td></tr>{% endfor %}</table></div>
+{% endblock %}

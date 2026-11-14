@@ -1,0 +1,13 @@
+{% extends 'base.html' %}{% block titulo %}Ingresar{% endblock %}
+{% block contenido %}
+<form class="tarjeta login" method="post" id="form-login" novalidate>
+  <h1>Ingresar al sistema</h1>
+  {% for e in errores %}<div class="msg msg-error" role="alert">{{ e }}</div>{% endfor %}
+  <label for="correo">Correo</label>
+  <input id="correo" name="correo" type="email" value="{{ correo }}" autocomplete="username">
+  <label for="clave">Contraseña</label>
+  <input id="clave" name="clave" type="password" autocomplete="current-password">
+  <button type="submit" id="btn-ingresar">INGRESAR</button>
+  <p class="nota">Demo: operador@rescatebot.bo / Operador123 · supervisor@rescatebot.bo / Supervisor123</p>
+</form>
+{% endblock %}

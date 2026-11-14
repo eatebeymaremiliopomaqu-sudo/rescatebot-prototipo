@@ -1,0 +1,39 @@
+{% extends 'base.html' %}{% block titulo %}Panel{% endblock %}
+{% block contenido %}
+{% if not s %}
+<div class="tarjeta"><h1>Panel de control</h1><p id="sin-mision">No tiene una misión activa.</p>
+<a class="boton" id="btn-nueva-mision" href="{{ url_for('mision_nueva') }}">INICIAR MISIÓN</a></div>
+{% else %}
+<h1>Panel de control · <span id="mision-actual">{{ s.codigo }} · {{ s.escenario }}</span></h1>
+<div class="rejilla">
+  <section class="tarjeta video"><h2>Video en vivo (ESP32-CAM)</h2>
+    <div class="pantalla">Transmisión MJPEG<br><small>en el prototipo se simula; las detecciones llegan por /api/detecciones</small></div>
+    <form method="post" action="{{ url_for('orden') }}" class="mando" id="form-orden">
+      <button name="direccion" value="adelante" id="btn-adelante">▲</button>
+      <button name="direccion" value="izquierda" id="btn-izquierda">◀</button>
+      <button name="direccion" value="derecha" id="btn-derecha">▶</button>
+      <button name="direccion" value="atras" id="btn-atras">▼</button>
+      <button name="direccion" value="detener" class="parada" id="btn-detener">PARADA DE EMERGENCIA</button>
+    </form>
+  </section>
+  <section class="tarjeta"><h2>Telemetría</h2>
+    <table class="tele">{% for v, u in unidades.items() %}<tr><th>{{ v }}</th>
+    <td id="ultimo-{{ v }}">{% if ultimo[v] is none %}—{% else %}{{ '%g' % ultimo[v] }} {{ u }}{% endif %}</td></tr>{% endfor %}</table>
+    <form method="post" action="{{ url_for('registrar_lectura') }}" id="form-lectura" novalidate>
+      <h3>Registrar lectura manual</h3>
+      <select id="variable" name="variable">{% for v in unidades %}<option value="{{ v }}">{{ v }}</option>{% endfor %}</select>
+      <input id="valor" name="valor" placeholder="valor (vacío = sin dato)">
+      <button type="submit" id="btn-lectura">GUARDAR</button>
+    </form>
+    <h3>Alertas</h3>
+    <ul id="lista-alertas">{% for a in alertas %}<li class="alerta">⚠ {{ a.descripcion }}</li>{% else %}<li>Sin alertas</li>{% endfor %}</ul>
+  </section>
+</div>
+<section class="tarjeta"><h2>Últimas lecturas</h2>
+<table id="tabla-lecturas"><tr><th>#</th><th>Variable</th><th>Valor</th><th>Válida</th><th>Hora</th></tr>
+{% for l in lecturas %}<tr><td>{{ l.id_lectura }}</td><td>{{ l.variable }}</td>
+<td>{% if l.valor is none %}—{% else %}{{ '%g' % l.valor }} {{ l.unidad }}{% endif %}</td><td>{{ 'sí' if l.valida else 'no' }}</td><td>{{ l.fecha_hora }}</td></tr>{% endfor %}</table>
+<form method="post" action="{{ url_for('mision_finalizar') }}"><button id="btn-finalizar" class="secundario">FINALIZAR MISIÓN</button></form>
+</section>
+{% endif %}
+{% endblock %}
