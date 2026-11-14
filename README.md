@@ -30,7 +30,8 @@ Usuarios de demostración: `operador@rescatebot.bo / Operador123`, `supervisor@r
 ## Pruebas
 ```bash
 pytest -v                                            # pruebas unitarias
-coverage run --branch -m pytest && coverage report -m   # cobertura de sentencias y ramas
+coverage run --branch -m pytest && coverage report -m   # cobertura (coverage.py)
+python tools/cobertura.py . src/rescatebot/reglas.py,src/rescatebot/__init__.py,src/rescatebot/db.py  # alternativa sin dependencias
 pytest tests/selenium -v                             # Selenium con Firefox (geckodriver lo gestiona Selenium Manager)
 set NAVEGADOR=chrome && pytest tests/selenium -v     # o con Chrome
 ```
