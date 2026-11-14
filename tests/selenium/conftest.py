@@ -26,7 +26,9 @@ URL = f"http://127.0.0.1:{PUERTO}"
 def app(tmp_path_factory):
     ruta = tmp_path_factory.mktemp("bd") / "selenium.db"
     aplicacion = create_app({"DATABASE": str(ruta), "SECRET_KEY": "selenium"})
-    servidor = make_server("127.0.0.1", PUERTO, aplicacion)
+    # threaded=True: con un solo hilo, una conexión abierta por el navegador anterior
+    # bloqueaba el servidor y la suite se quedaba colgada en el 9.º caso.
+    servidor = make_server("127.0.0.1", PUERTO, aplicacion, threaded=True)
     hilo = threading.Thread(target=servidor.serve_forever, daemon=True)
     hilo.start()
     yield aplicacion
