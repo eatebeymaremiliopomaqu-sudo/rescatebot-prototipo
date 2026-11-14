@@ -38,7 +38,7 @@ def validar_lectura(variable, valor):
     if valor is None or str(valor).strip() == "":
         return True, None, "Sin dato: se guarda como lectura inválida (NULL)"
     try:
-        numero = float(str(valor).strip())
+        numero = float(str(valor).strip().replace(",", "."))  # acepta 23,5 (BUG-CP09)
     except ValueError:
         return False, None, "El valor debe ser numérico"
     minimo, maximo = RANGOS[variable]

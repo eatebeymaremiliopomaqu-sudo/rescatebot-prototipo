@@ -20,6 +20,11 @@ def test_validar_lectura_limites_distancia(valor, ok):
     assert validar_lectura("distancia", valor)[0] is ok
 
 
+def test_validar_lectura_decimal_con_coma():
+    # Regresión del defecto encontrado con Selenium (CP09)
+    assert validar_lectura("temp_objeto", "23,5") == (True, 23.5, None)
+
+
 def test_validar_lectura_none_es_sin_dato():
     assert validar_lectura("bateria", None) == (True, None, "Sin dato: se guarda como lectura inválida (NULL)")
 
