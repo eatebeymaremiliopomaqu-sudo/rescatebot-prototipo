@@ -1,0 +1,15 @@
+digraph F { graph[fontname="DejaVu Sans",dpi=160,nodesep=0.3,ranksep=0.3,bgcolor=white]; node[fontname="DejaVu Sans",fontsize=10]; edge[fontname="DejaVu Sans",fontsize=9,color="#333333"];
+ini[label="Inicio\nevaluar_orden(direccion, distancia_cm, bateria_v)",shape=oval,style=filled,fillcolor="#dbe7f6"];
+d1[label="(1) ¿direccion en\nDIRECCIONES?",shape=diamond,style=filled,fillcolor="#fff4d6"];
+r2[label="(2) RECHAZADA",shape=box];
+d3[label="(3) ¿direccion ==\n'detener'?",shape=diamond,style=filled,fillcolor="#fff4d6"];
+r4[label="(4) DETENER",shape=box];
+d5[label="(5) ¿bateria_v no None\ny < 6,4 V?",shape=diamond,style=filled,fillcolor="#fff4d6"];
+r6[label="(6) BLOQUEO_BATERIA",shape=box];
+d7[label="(7) ¿direccion ==\n'adelante'?",shape=diamond,style=filled,fillcolor="#fff4d6"];
+d8[label="(8) ¿distancia no None\ny < 20 cm?",shape=diamond,style=filled,fillcolor="#fff4d6"];
+r9[label="(9) BLOQUEO_PROXIMIDAD",shape=box];
+r10[label="(10) EJECUTAR",shape=box];
+fin[label="(11) Fin",shape=oval,style=filled,fillcolor="#dbe7f6"];
+ini->d1; d1->r2[label="No"]; d1->d3[label="Sí"]; d3->r4[label="Sí"]; d3->d5[label="No"]; d5->r6[label="Sí"]; d5->d7[label="No"]; d7->d8[label="Sí"]; d7->r10[label="No"]; d8->r9[label="Sí"]; d8->r10[label="No"];
+r2->fin; r4->fin; r6->fin; r9->fin; r10->fin; }

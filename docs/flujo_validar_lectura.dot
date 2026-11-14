@@ -1,0 +1,14 @@
+digraph F { graph[fontname="DejaVu Sans",dpi=160,nodesep=0.35,ranksep=0.32,bgcolor=white]; node[fontname="DejaVu Sans",fontsize=10]; edge[fontname="DejaVu Sans",fontsize=9,color="#333333"];
+ini[label="Inicio\nvalidar_lectura(variable, valor)",shape=oval,style=filled,fillcolor="#dbe7f6"];
+d1[label="(1) ¿variable\nen RANGOS?",shape=diamond,style=filled,fillcolor="#fff4d6"];
+r2[label="(2) return False,\n'Variable desconocida'",shape=box];
+d3[label="(3) ¿valor None\no vacío?",shape=diamond,style=filled,fillcolor="#fff4d6"];
+r4[label="(4) return True, None,\n'Sin dato'",shape=box];
+d5[label="(5) try: numero = float(valor)\n¿ValueError?",shape=diamond,style=filled,fillcolor="#fff4d6"];
+r6[label="(6) return False,\n'debe ser numérico'",shape=box];
+d7[label="(7) min, max = RANGOS[v]\n¿min ≤ numero ≤ max?",shape=diamond,style=filled,fillcolor="#fff4d6"];
+r8[label="(8) return True,\nnumero, None",shape=box];
+r9[label="(9) return False,\n'Fuera de rango'",shape=box];
+fin[label="(10) Fin",shape=oval,style=filled,fillcolor="#dbe7f6"];
+ini->d1; d1->r2[label="No"]; d1->d3[label="Sí"]; d3->r4[label="Sí"]; d3->d5[label="No"]; d5->r6[label="Sí"]; d5->d7[label="No"]; d7->r8[label="Sí"]; d7->r9[label="No"];
+r2->fin; r4->fin; r6->fin; r8->fin; r9->fin; }

@@ -12,7 +12,7 @@ button,.boton{display:inline-block;background:#1f6fd1;color:#fff;border:0;border
 .msg{padding:9px 12px;border-radius:6px;margin:8px 0;font-size:14px}.msg-error{background:#fde3e3;color:#9b1c1c}
 .msg-ok{background:#e1f5e8;color:#16643a}.msg-aviso{background:#fff4d6;color:#7a5a00}
 .rejilla{display:grid;grid-template-columns:3fr 2fr;gap:16px}
-.pantalla{background:#20262e;color:#cfd6df;height:190px;border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center}
+.pantalla{background:#20262e;color:#cfd6df;height:190px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .mando{display:grid;grid-template-columns:repeat(3,80px);gap:6px;justify-content:center}.mando button{margin:0}
 #btn-adelante{grid-column:2}#btn-izquierda{grid-column:1;grid-row:2}#btn-derecha{grid-column:3;grid-row:2}#btn-atras{grid-column:2;grid-row:3}
 table{width:100%;border-collapse:collapse;font-size:13px}th,td{border-bottom:1px solid #e1e6ee;padding:6px;text-align:left}
